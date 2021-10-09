@@ -28,7 +28,7 @@ public class PageController
     @GetMapping("/recommand")
     public String recommand()
     {
-        return "recommend.html";
+        return "recommand";
     }
 
 
