@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Data
 @AllArgsConstructor
-@Component
 public class Subscribe
 {
     String subscribe_name;

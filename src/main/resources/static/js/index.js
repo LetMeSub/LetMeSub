@@ -1,11 +1,7 @@
-/*!
-* Start Bootstrap - Freelancer v7.0.4 (https://startbootstrap.com/theme/freelancer)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
+// Jquery Import
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -52,3 +48,4 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+

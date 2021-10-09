@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Data
 @AllArgsConstructor
-@Component
 public class User
 {
     String User_id;
