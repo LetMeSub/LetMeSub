@@ -1,21 +1,38 @@
 package com.example.letmesub.controller;
 
+import com.example.letmesub.dto.User;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 //유민상
 
-@Controller
+@RestController
 public class UserController
 {
-    @GetMapping("/login")
-    public String login()
-    {
-        return "login";
-    }
 
-    @GetMapping("/register")
-    public String register()
+
+
+    /*
+     회원가입 기능
+     날짜:20211009
+     register.html 에서 아이디 비밀번호 이메일 값을 json 으로 받아옴
+     받아온 json값을 User 객체로 매핑
+     user 객체를 db에 암호화해서 저장
+     저장 성공시 String 'success' 반환
+     */
+    @PostMapping("/api/register")
+    public Map<String,String> user_register(@RequestBody User user)
     {
-        return "register";
+        System.out.println(user.toString());
+        Map<String,String> result = new HashMap<>();
+        result.put("result", "success");
+        return result;
     }
 }
