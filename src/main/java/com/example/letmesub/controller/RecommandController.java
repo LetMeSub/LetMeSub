@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RecommandController
 {
 
-    @GetMapping("/recommand")
+    @GetMapping("/recommssssand")
     public String recommand()
     {
         return "recommand";
