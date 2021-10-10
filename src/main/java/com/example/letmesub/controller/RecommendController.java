@@ -4,14 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 // 조영우
 
-
 @Controller
-public class RecommandController
+public class RecommendController
 {
 
-    @GetMapping("/recommand")
-    public String recommand()
+    @GetMapping("/recommend")
+    public String recommend()
     {
-        return "recommand";
+        return "recommend";
     }
 }
