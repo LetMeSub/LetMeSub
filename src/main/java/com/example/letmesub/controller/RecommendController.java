@@ -30,4 +30,3 @@ public class RecommendController
         return "recommend";
     }
 }
-
