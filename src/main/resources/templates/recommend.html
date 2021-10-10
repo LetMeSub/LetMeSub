@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -44,7 +44,7 @@
             <div class="container d-flex align-items-center flex-column">
                
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0" th:text="${userquery}"></h1>
+                <h1 class="masthead-heading text-uppercase mb-0"  th:text="${count} + ' 번째 질문입니다.'"></h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -53,27 +53,27 @@
                 </div>
                 <!-- Masthead Subheading-->
                 <div class="col-lg-7 mb-5 mb-lg-0">
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!">
+                    <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend?count='+${count+1}+'&weight=1'}">
                         1
                     </a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!">
+                    <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend?count='+${count+1}+'&weight=2'}">
                         2
                     </a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!">
+                    <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend?count='+${count+1}+'&weight=3'}">
                         3
                     </a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!">
+                    <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend?count='+${count+1}+'&weight=4'}">
                         4
                     </a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!">
+                    <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend?count='+${count+1}+'&weight=5'}">
                         5
                     </a>
                     <!-- 하이퍼링크 달아놓음 -->
-                    <a class="btn btn-outline-light btn-social mx-1" href="file:///C:/Users/ak47y/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/%EC%A2%85%ED%94%84%20%EC%A0%84%EC%B2%B4/LetMeSub/recommend_selected.html">
+                    <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend?count='+${count+1}+'&weight=6'}">
                         6
                     </a>
                     <!-- 하이퍼링크 달아놓음 -->
-                    <a class="btn btn-outline-light btn-social mx-1" href="file:///C:/Users/ak47y/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/%EC%A2%85%ED%94%84%20%EC%A0%84%EC%B2%B4/LetMeSub/recommend_choosing.html">
+                    <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend?count='+${count+1}+'&weight=7'}">
                         7
                     </a>    
                 </div>
