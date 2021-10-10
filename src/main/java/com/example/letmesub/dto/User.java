@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class User
 {
-    String User_id;
-    String User_pw;
-    String User_email;
+    String user_id;
+    String user_pw;
+    String user_email;
 }
