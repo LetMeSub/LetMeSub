@@ -9,7 +9,7 @@ public class RecommendController
 {
 
     @GetMapping("/recommend")
-    public String recommand()
+    public String recommend()
     {
         return "recommend";
     }
