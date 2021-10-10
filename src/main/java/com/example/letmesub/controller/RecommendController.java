@@ -3,15 +3,14 @@ package com.example.letmesub.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 // 조영우
-//ddd
 
 @Controller
-public class RecommandController
+public class RecommendController
 {
 
-    @GetMapping("/recommssssand")
+    @GetMapping("/recommend")
     public String recommand()
     {
-        return "recommand";
+        return "recommend";
     }
 }
