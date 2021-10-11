@@ -30,4 +30,9 @@ public class PageController
         return "register";
     }
 
+    @GetMapping("/detail")
+    public String detail()
+    {
+        return "detail";
+    }
 }
