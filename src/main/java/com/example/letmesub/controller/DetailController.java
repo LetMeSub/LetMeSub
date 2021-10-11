@@ -1,9 +1,10 @@
 package com.example.letmesub.controller;
 
 import org.springframework.stereotype.Controller;
- // 안주현
+import org.springframework.web.bind.annotation.RestController;
+// 안주현
 
-@Controller
+@RestController
 public class DetailController
 {
 }
