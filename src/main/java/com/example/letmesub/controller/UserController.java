@@ -29,7 +29,22 @@ public class UserController
     {
         System.out.println(user.toString());
         Map<String,String> result = new HashMap<>();
-        result.put("result", "success");
+
+        try
+        {
+         // DB에 User 정보 삽입
+
+
+            result.put("result", "success");
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+
+
         return result;
     }
 }
