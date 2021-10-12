@@ -23,11 +23,12 @@ function register() {
         $.ajax({
             type: "POST",
             url: "api/register",
-            data: {
-                "User_id": id_give,
-                "User_pw": pw_give,
-                "User_email": email_give
-            },
+            contentType: 'application/json',
+            data: JSON.stringify( {
+                user_id: id_give,
+                user_pw: pw_give,
+                user_email: email_give
+            }),
             success: function (response) {
                 if (response['result'] == 'success') {
                     alert('회원가입이 완료되었습니다.')

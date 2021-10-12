@@ -64,6 +64,7 @@
                         <div class="btn-area">
                             <button class="btn btn-primary" onclick="register()" >회원가입</button>
                         </div>
+                    </form>
                 </section>
             </div>
         </header>
@@ -79,50 +80,11 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <!--<script src="/js/register.js"></script> -->
+        <script src="/js/register.js"></script>
 
 
 
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script>
-        // 회원가입
-        function register() {
-        console.log('hello')
-        let id_give = $('#userid').val()
-        if (id_give.trim() == '') {
-        alert('아이디를 제대로 입력해주세요')
-        }
 
-        let pw_give = $('#userpw').val()
-        if (pw_give.trim() == '') {
-        alert('비밀번호를 제대로 입력해주세요')
-        }
-
-        let email_give = $('#email').val()
-        if (email_give.trim() == '') {
-        alert('이메일을 제대로 입력해주세요')
-        }
-        console.log(id_give,pw_give,email_give)
-        $.ajax({
-        type: "POST",
-        url: "api/register",
-        contentType: 'application/json',
-            data: {
-        "User_id": id_give,
-        "User_pw": pw_give,
-        "User_email": email_give
-        },
-        success: function (response) {
-        if (response['result'] == 'success') {
-        alert('회원가입이 완료되었습니다.')
-        window.location.href = '/login'
-        } else {
-        alert(response['msg'])
-        }
-        }
-        })
-
-        }
-    </script>
     </body>
 </html>

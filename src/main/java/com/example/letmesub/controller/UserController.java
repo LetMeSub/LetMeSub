@@ -4,10 +4,7 @@ import com.example.letmesub.dto.User;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +29,22 @@ public class UserController
     {
         System.out.println(user.toString());
         Map<String,String> result = new HashMap<>();
-        result.put("result", "success");
+
+        try
+        {
+         // DB에 User 정보 삽입
+
+
+            result.put("result", "success");
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+
+
         return result;
     }
 }

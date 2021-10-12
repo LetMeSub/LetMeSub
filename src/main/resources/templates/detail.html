@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>LET ME SUB</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" /> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/index.css" rel="stylesheet" />
+        <!-- chart.js  --> // https://www.chartjs.org/docs/latest/charts/radar.html
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    </head>
+
+
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">LET ME SUB</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Login</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Logo Section-->
+        <header class="masthead bg-primary">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- logo Image-->
+                <img class="rounded img-fluid" src="../assets/img/portfolio/cabin.png" alt="..." />
+            </div>기
+
+
+            <!-- detail Section-->
+            <section class="page-section bg-primary text-white mb-0" id="about">
+                <div class="container">
+                    <!-- About Section Heading-->
+                    <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                    <!-- Icon Divider-->
+                    <div class="divider-custom divider-light">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                        <div class="divider-custom-line"></div>
+                    </div>
+
+                    <!-- 육각형과 설명칸 -->
+                    <div class="row">
+                        <!-- 육각형 -->
+                        <div class="col-lg-4 ms-auto"><p class="lead">
+                            <div>
+                                <!--차트가 그려질 부분-->
+                            <canvas id="radar-chart" width="250" height="250"></canvas>
+                            <script>
+                                new Chart(document.getElementById("radar-chart"), {
+                                    type: 'radar',
+                                    data: {  labels: [
+                                            '항목1',
+                                            '항목2',
+                                            '항목3',
+                                            '항목4',
+                                            '항목5',
+                                            '항목6'
+                                        ],
+                                        datasets: [{
+                                            label: 'My First Dataset',
+                                            data: [65, 59, 90, 81, 56, 55],
+                                            fill: true,
+                                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                            borderColor: 'rgb(255, 99, 132)',
+                                            pointBackgroundColor: 'rgb(255, 99, 132)',
+                                            pointBorderColor: '#fff',
+                                            pointHoverBackgroundColor: '#fff',
+                                            pointHoverBorderColor: 'rgb(255, 99, 132)'
+                                        }]
+                                    },
+                                    options: {
+                                        plugins: {
+                                        title: {
+                                            display: true,
+                                            text: '육각형 능력표시',    //그래프 제목표시
+
+                                            }
+                                        }
+                                        , scales: {
+                                            r: {
+                                                angleLines: {
+                                                    display: true   //눈금사이 줄
+                                                },
+                                                suggestedMin: 0,     //최소치
+                                                suggestedMax: 100,   //최대치
+                                                ticks :{
+                                                    display: false  //줄간격마다 숫자표시
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
+
+
+                            </div>
+                        </div>
+                        <!-- 설명칸 -->
+                        <div class="col-lg-4 me-auto">
+                            <p class="lead"> 설명칸입니다
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+
+
+        <!-- Review Section-->
+        <section id="review">
+            <div class="card-header bg-light">
+                <i class="fa fa-comment fa"></i> REVIEW
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </li>
+                    <button type="button" class="btn btn-dark mt-3 btn-lg btn-block " onClick="javascript:addReply();">submit</button>
+                </ul>
+            </div>
+
+        </section>
+
+
+      
+
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">
+                            경기도 성남시 수정구
+                            <br />
+                            성남대로 1342
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Around the Web</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">About LET ME SUB</h4>
+                        <p class="lead mb-0">
+                            LET ME SUB 구독 추천 비교 서비스 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy;  2021</small></div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../../../../../Downloads/상세페이지%20(2)/js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    
+    </body>
+</html>
