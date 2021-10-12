@@ -51,6 +51,7 @@ public class RecommendController
             int a = 222222;
             //최종 점수 계산
             int weight = recAlgo3.rec_algo(a, list);
+            model.addAttribute("weight", weight);
             System.out.println(weight);
             return "recommend_selected";
         }

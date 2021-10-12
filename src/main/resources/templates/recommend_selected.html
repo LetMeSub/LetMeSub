@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -44,7 +44,7 @@
             <div class="container d-flex align-items-center flex-column">
                
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">추천드립니다!</h1>
+                <h1 class="masthead-heading text-uppercase mb-0" th:text="${weight}+'추천드립니다!'"></h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
