@@ -39,6 +39,7 @@ public class RecommendController
         HttpSession session = req.getSession();
         ArrayList<Integer> list = (ArrayList)session.getAttribute("weight");
         if(list==null){
+            System.out.println(subscribeDao.list());
             list = new ArrayList<Integer>();
             session.setAttribute("weight",list);
         }
