@@ -1,19 +1,24 @@
 package com.example.letmesub.controller;
 
+import com.example.letmesub.dao.UserDao;
 import com.example.letmesub.dto.User;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 //유민상
 
 @RestController
 public class UserController
 {
-
+    @Autowired
+    private UserDao userDao;
 
 
     /*
@@ -25,16 +30,15 @@ public class UserController
      저장 성공시 String 'success' 반환
      */
     @PostMapping("/api/register")
-    public Map<String,String> user_register(@RequestBody User user)
+    public Map<String, String> user_register(@RequestBody User user)
     {
         System.out.println(user.toString());
-        Map<String,String> result = new HashMap<>();
-
+        Map<String, String> result = new HashMap<>();
+        // password 암호화 과정 필요
         try
         {
-         // DB에 User 정보 삽입
-
-
+            // DB에 User 정보 삽입
+            userDao.insertUser(user);
             result.put("result", "success");
 
         } catch (Exception e)
@@ -43,8 +47,17 @@ public class UserController
         }
 
 
-
-
         return result;
+    }
+
+
+
+
+    @RequestMapping("/api/user")
+    public List<User> user()
+    {
+        System.out.println("db con");
+        return userDao.selectUsers();
+
     }
 }

@@ -4,7 +4,9 @@ import com.example.letmesub.dto.User;
 
 import java.util.List;
 
+
 public interface UserDao
 {
-    List<User> selectUser(User param) throws Exception;
+    List<User> selectUsers();
+    void insertUser(User user);
 }
