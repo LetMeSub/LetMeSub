@@ -1,5 +1,7 @@
 package com.example.letmesub.controller;
 
+import com.example.letmesub.dao.ISubscribeDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,9 @@ import java.util.ArrayList;
 @Controller
 public class RecommendController
 {
+    //구독db 접근
+    @Autowired
+    private ISubscribeDao subscribeDao;
 
     @GetMapping("/recommend")
     public String recommend(Model model, HttpServletRequest req)
@@ -26,7 +31,6 @@ public class RecommendController
             model.addAttribute("count",qcount);
             return "recommend";
         }
-        
         //html에서 값 받아옴
         int qcount = Integer.parseInt(req.getParameter("count"));
         int uweight = Integer.parseInt(req.getParameter("weight"));
@@ -46,7 +50,8 @@ public class RecommendController
         
         //질문 6개 모두 완료했음
         if(qcount == 7){
-            
+            for(int i = 0; i < subscribeDao.list().size();)
+            subscribeDao.list().get(0).getSubscribe_weight();
             //db에서 뽑아올 서비스 가중치
             int a = 222222;
             //최종 점수 계산
