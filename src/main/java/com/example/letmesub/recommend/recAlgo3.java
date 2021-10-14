@@ -3,6 +3,7 @@ package com.example.letmesub.recommend;
 import java.util.ArrayList;
 
 public class recAlgo3 {
+    //db 6자리 숫자 받은거 배열로분리함 
     public static int[] find_num(int s_weight){
 
         int weight[] = new int[6];
