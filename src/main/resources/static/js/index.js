@@ -49,3 +49,10 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
+function SetUserInfo() {
+    $.ajax({
+
+    })
+
+}
+

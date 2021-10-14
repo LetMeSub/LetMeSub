@@ -4,7 +4,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js
 
 // 회원가입 
 function register() {
-    console.log('hello')
     let id_give = $('#userid').val()
     if (id_give.trim() == '') {
         alert('아이디를 제대로 입력해주세요')
@@ -23,6 +22,7 @@ function register() {
         $.ajax({
             type: "POST",
             url: "api/register",
+            async : false,
             contentType: 'application/json',
             data: JSON.stringify( {
                 user_id: id_give,
@@ -32,9 +32,9 @@ function register() {
             success: function (response) {
                 if (response['result'] == 'success') {
                     alert('회원가입이 완료되었습니다.')
-                    window.location.href = '/login'
+                    window.location.assign('/');
                 } else {
-                    alert(response['msg'])
+                    alert(response[''])
                 }
             }
         })

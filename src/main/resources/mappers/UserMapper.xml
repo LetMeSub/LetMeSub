@@ -13,4 +13,8 @@
         INSERT INTO user VALUES (#{user_id},#{user_pw}, #{user_email})
     </insert>
 
+    <select id="findUserById" resultType="com.example.letmesub.dto.User">
+        SELECT * FROM user where user_id = #{id}
+    </select>
+
 </mapper>
