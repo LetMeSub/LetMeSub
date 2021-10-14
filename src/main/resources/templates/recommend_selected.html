@@ -44,7 +44,7 @@
             <div class="container d-flex align-items-center flex-column">
 
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0" th:text="${weight}+'추천드립니다!'"></h1>
+                <h1 class="masthead-heading text-uppercase mb-0" th:text="${name}"></h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -53,13 +53,12 @@
                 </div>
                 <section class="page-section portfolio" id="portfolio">
                     <!-- Portfolio Item 3-->
-                    <div class="col-md-12 col-lg-12 mb-12">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
-                        </div>
+                    <div class = "row" style="float: none;";>
+                        <div class="col-lg-8" style="float: none; margin:0 auto;">
+                            <a href="/detail">
+                                <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
+                            </a>
+                    </div>
                     </div>
                 </section>
 
