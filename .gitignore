@@ -57,4 +57,4 @@ out/
 *.zip
 *.tar.gz
 *.rar
-
+application.properties
