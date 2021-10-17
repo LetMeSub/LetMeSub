@@ -1,5 +1,7 @@
 // Jquery Import
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+// 쿠키 사용을 위한 Jquery-cookie 임포트
+src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"
 
 
 // 로그인
@@ -27,8 +29,8 @@ function login() {
             success: function (response) {
                 if (response['result'] == 'success') {
                     alert('로그인에 성공하였습니다!')
-                    console.log(response['result'])
-                    window.location.href = '/'
+                    $.cookie('loginToken', response['token'])
+                    $(location).attr('href','/');
                 } else {
                     alert('로그인에 실패했습니다!')
                 }

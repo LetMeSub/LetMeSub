@@ -43,6 +43,7 @@ public class UserController
             userDao.insertUser(user);
             result.put("result", "success");
 
+
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -84,10 +85,12 @@ public class UserController
 
                     //세션이 있으면 있는 세션 반환, 없으면 신규 세션 생성
                     HttpSession session = request.getSession();
-
+                    // 세션에 아이디 정보를 담는다.
                     session.setAttribute("user",FindedUser.getUser_id());
                     System.out.println("session-attribute: "+session.getAttribute("user"));
                     System.out.println(session.getCreationTime());
+                    // 세션값과 성공 메세지 반환
+                    result.put("token", session.getAttribute("user").toString());
                     result.put("result", "success");
                 }
                 else

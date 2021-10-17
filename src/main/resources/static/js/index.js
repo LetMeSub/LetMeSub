@@ -1,6 +1,5 @@
 // Jquery Import
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-
+src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -32,7 +31,8 @@ window.addEventListener('DOMContentLoaded', event => {
             target: '#mainNav',
             offset: 72,
         });
-    };
+    }
+    ;
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -49,10 +49,30 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-function SetUserInfo() {
-    $.ajax({
+function setUserInfo() {
+    let userInfo = $('#user-info')
+    let token = $.cookie('loginToken')
+    console.log(token)
 
+    $.ajax({
+        type: "POST",
+        url: "/index",
+        headers: {'authorization': `Bearer ${token}`},
+        data: {},
+        success: function (response) {
+            if (response['result'] === 'success') {
+                // id 를 전역변수 처리 하겠습니다.
+                id = response['id']
+                userInfo.append(`
+                        <a class="navbar-brand" href="#">${id}</a>
+                        <a class="btn btn-secondary" onclick="logOut()">Log Out</a>
+                    `)
+            } else {
+                alert('다시 로그인해주세요.')
+                window.location.href = '/login'
+            }
+        }
     })
 
-}
 
+}
