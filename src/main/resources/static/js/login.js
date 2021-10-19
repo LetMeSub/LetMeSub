@@ -28,9 +28,9 @@ function login() {
             }),
             success: function (response) {
                 if (response['result'] == 'success') {
-                    alert('로그인에 성공하였습니다!')
-                    $.cookie('loginToken', response['token'])
-                    $(location).attr('href','/');
+                    alert('로그인에 성공하였습니다!');
+                    $.cookie('loginToken', response['token']);
+                    window.location.assign("/");
                 } else {
                     alert('로그인에 실패했습니다!')
                 }
