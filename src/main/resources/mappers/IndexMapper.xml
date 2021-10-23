@@ -7,4 +7,7 @@
     <select id="IndexList" resultType="com.example.letmesub.dto.SubscribeDto">
         select * from subscribe where subscribe_category = #{category}
     </select>
+    <select id="IndexAllList" resultType="com.example.letmesub.dto.SubscribeDto">
+        select * from subscribe
+    </select>
 </mapper>

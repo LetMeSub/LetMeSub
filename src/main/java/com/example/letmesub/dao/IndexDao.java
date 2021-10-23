@@ -9,4 +9,5 @@ import java.util.List;
 public interface IndexDao
 {
     List<SubscribeDto> IndexList(String category);
+    List<SubscribeDto> IndexAllList();
 }

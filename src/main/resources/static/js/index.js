@@ -57,6 +57,7 @@ $(document).ready(function ()
 {
     // user 정보
     setUserInfo()
+    setIndexPage()
 });
 
 function setUserInfo() {
@@ -94,4 +95,95 @@ function logOut()
     $.removeCookie('loginToken', {path: '/'})
     alert('로그아웃 되었습니다.')
     window.location.href = '/'
+}
+
+// index 페이지 처음 실행 화면 , 구독 서비스들 모두 나옴
+function setIndexPage() {
+    let subs = $('#subs')
+    $("#btn_all").css({color:"red"})
+
+    $.ajax({
+        type: "POST",
+        url: "/api/index",
+        contentType: 'application/json',
+        data: JSON.stringify( {
+            "category" : "all"
+        }),
+        success: function (response) {
+            if (response['result'] === 'success') {
+                let content = $.parseJSON(response['subs'])
+                console.log(content)
+                subs.empty()
+
+                $.each(content, function (index, item)
+                {
+                    subs.append(`
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                 data-bs-target="#portfolioModal1">
+                                <div
+                                    class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i
+                                        class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                     alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
+                                <span class="sub-title">${item.subscribe_name}</span>
+                            </div>
+                        </div>
+                    `)
+                })
+
+            }
+
+        }
+    })
+}
+
+// 카테고리 선택시 구독 서비스들 나오게 하는 함수
+function selectIndexPage(category) {
+    let subs = $('#subs')
+
+    $("#select_all").css("color","red")
+
+    $.ajax({
+        type: "POST",
+        url: "/api/SelectIndex",
+        contentType: 'application/json',
+        data: JSON.stringify( {
+            "category" : category
+        }),
+        success: function (response) {
+            if (response['result'] === 'success') {
+                let content = $.parseJSON(response['subs'])
+                console.log(content)
+                subs.empty()
+
+                $.each(content, function (index, item)
+                {
+                    subs.append(`
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                 data-bs-target="#portfolioModal1">
+                                <div
+                                    class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i
+                                        class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                     alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
+                                <span class="sub-title">${item.subscribe_name}</span>
+                            </div>
+                        </div>
+                    `)
+                })
+
+            }
+
+        }
+    })
+}
+
+// 구독 이미지 클릭시 상세 페이지로 이동
+function ContentToDetail(subscribe_name) {
 }

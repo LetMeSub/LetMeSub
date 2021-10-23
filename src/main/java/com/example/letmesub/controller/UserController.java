@@ -2,13 +2,8 @@ package com.example.letmesub.controller;
 
 import com.example.letmesub.dao.UserDao;
 import com.example.letmesub.dto.User;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -21,8 +16,6 @@ public class UserController
 {
     @Autowired
     private UserDao userDao;
-
-
     /*
      회원가입 기능
      날짜:20211009
@@ -59,7 +52,6 @@ public class UserController
     {
         System.out.println("db con");
         return userDao.selectUsers();
-
     }
 
     @PostMapping("api/login")

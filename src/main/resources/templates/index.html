@@ -68,12 +68,11 @@
             <div class="container" style="text-align:center;">
                 <!-- 구독서비스 선택 카테고리-->
                 <div >
-                <a class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " href="detailPage.html">OTT</a>
-                <a class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " href="detailPage.html">음악</a>
-                <a class="page-section-heading  text-center text-uppercase text-secondary mb-0 category-title " href="detailPage.html">클라우드</a>
-                <a class="page-section-heading  text-center text-uppercase text-secondary mb-0 category-title " href="detailPage.html">쇼핑</a>
-                <a class="page-section-heading  text-center text-uppercase text-secondary mb-0 category-title " href="detailPage.html">푸드</a>
-                <a class="page-section-heading  text-center text-uppercase text-secondary mb-0 category-title " href="detailPage.html">라이프스타일</a>
+                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " id = "btn_all" onclick="setIndexPage()" >전체</span>
+                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " onclick="selectIndexPage('ott')">OTT</span>
+                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " onclick="selectIndexPage('music')">음악</span>
+                <span class="page-section-heading  text-center text-uppercase text-secondary mb-0 category-title " onclick="selectIndexPage('shopping')">쇼핑</span>
+
                 </div>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
@@ -82,63 +81,8 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../assets/img/subs/netflix.png" alt="..." /> <!-- 사진 크기 900x650 으로 해야함 -->
-                            <span class="sub-title">넷플릭스</span> 
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../assets/img/subs/coupang.png" alt="..." />
-                            <span class="sub-title">쿠팡</span>
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../assets/img/portfolio/circus.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../assets/img/portfolio/game.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../assets/img/portfolio/safe.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../assets/img/portfolio/submarine.png" alt="..." />
-                        </div>
-                    </div>
+                <div class="row justify-content-center" id = "subs">
+                    <!-- Portfolio Item S-->
                 </div>
             </div>
             <div class="text-center mt-4">

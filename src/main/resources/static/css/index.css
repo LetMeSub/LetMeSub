@@ -11510,6 +11510,13 @@ html {
 .sub-title{
     font-weight: bold;
     text-align: center;
-    padding: 5px;
-    font-size: 18px;
+    padding: 8px;
+    font-size: 25px;
+}
+
+.sub-img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+
 }
