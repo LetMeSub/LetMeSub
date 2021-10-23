@@ -100,7 +100,8 @@ function logOut()
 // index 페이지 처음 실행 화면 , 구독 서비스들 모두 나옴
 function setIndexPage() {
     let subs = $('#subs')
-    $("#btn_all").css({color:"red"})
+    let main_logo = $('#main_logo')
+    let selected_sub = $('#btn_all')
 
     $.ajax({
         type: "POST",
@@ -114,7 +115,8 @@ function setIndexPage() {
                 let content = $.parseJSON(response['subs'])
                 console.log(content)
                 subs.empty()
-
+                main_logo.attr("src","../assets/img/index/index_main.png")
+                selected_sub.css("color","red")
                 $.each(content, function (index, item)
                 {
                     subs.append(`
@@ -143,8 +145,7 @@ function setIndexPage() {
 // 카테고리 선택시 구독 서비스들 나오게 하는 함수
 function selectIndexPage(category) {
     let subs = $('#subs')
-
-    $("#select_all").css("color","red")
+    let main_logo = $('#main_logo')
 
     $.ajax({
         type: "POST",
@@ -158,6 +159,7 @@ function selectIndexPage(category) {
                 let content = $.parseJSON(response['subs'])
                 console.log(content)
                 subs.empty()
+                main_logo.attr("src","../assets/img/index/index_"+category+".png")
 
                 $.each(content, function (index, item)
                 {
@@ -186,4 +188,9 @@ function selectIndexPage(category) {
 
 // 구독 이미지 클릭시 상세 페이지로 이동
 function ContentToDetail(subscribe_name) {
+}
+
+function ToRecommand()
+{
+
 }

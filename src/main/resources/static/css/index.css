@@ -11520,3 +11520,7 @@ html {
     object-fit: cover;
 
 }
+
+.btn-cursor{
+    cursor: pointer;
+}

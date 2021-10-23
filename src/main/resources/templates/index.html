@@ -50,9 +50,9 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="../assets/img/LET%20ME%20SUB%20-%20MarkMaker%20Logo.svg" alt="..." />
+                <img class="masthead-avatar mb-5 " src="../assets/img/index/index_main.png" alt="..."  id ="main_logo"/>
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">추천 시스템</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">나에게 맞는 구독 </h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -60,7 +60,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">추천 시스템 구현 섹터</p>
+                <p class="masthead-subheading font-weight-light mb-0 btn-cursor" onclick="ToRecommand()">찾으러 가기</p>
             </div>
         </header>
         <!-- Portfolio Section-->
@@ -68,10 +68,10 @@
             <div class="container" style="text-align:center;">
                 <!-- 구독서비스 선택 카테고리-->
                 <div >
-                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " id = "btn_all" onclick="setIndexPage()" >전체</span>
-                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " onclick="selectIndexPage('ott')">OTT</span>
-                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title " onclick="selectIndexPage('music')">음악</span>
-                <span class="page-section-heading  text-center text-uppercase text-secondary mb-0 category-title " onclick="selectIndexPage('shopping')">쇼핑</span>
+                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title btn-cursor" id = "btn_all" onclick="setIndexPage()" >전체</span>
+                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title btn-cursor" onclick="selectIndexPage('ott')">OTT</span>
+                <span class="page-section-heading text-center text-uppercase text-secondary mb-0 category-title btn-cursor" onclick="selectIndexPage('music')">음악</span>
+                <span class="page-section-heading  text-center text-uppercase text-secondary mb-0 category-title btn-cursor" onclick="selectIndexPage('shopping')">쇼핑</span>
 
                 </div>
                 <!-- Icon Divider-->
