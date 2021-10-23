@@ -2,8 +2,8 @@ package com.example.letmesub.controller;
 // 유민상
 
 import com.example.letmesub.dao.IndexDao;
-import com.example.letmesub.dao.UserDao;
 import com.example.letmesub.dto.SubscribeDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,19 +53,26 @@ public class IndexController
     @GetMapping("/api/index")
     public Map<String, String> SetIndexContent(String category)
     {
-
-        // DB 에서 해당 카테고리 가져오기
-        List<SubscribeDto> SelectedList = indexDao.IndexList(category);
-
-        for (SubscribeDto i : SelectedList)
-        {
-            System.out.println(i.getSubscribe_name());
-        }
-
-        // 반환값
         Map<String, String> result = new HashMap<>();
-        result.put("result", "success");
+
+        try{
+            // DB 에서 해당 카테고리 가져오기
+            List<SubscribeDto> SelectedList = indexDao.IndexList(category);
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            String json = objectMapper.writeValueAsString(SelectedList);
+            System.out.println(json);
+
+
+            // 반환값
+            result.put("result", "success");
+            result.put("subs", json);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         return result;
+
     }
 
 
