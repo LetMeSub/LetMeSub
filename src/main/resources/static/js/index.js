@@ -1,7 +1,7 @@
 // Jquery Import
 src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 // 쿠키 사용을 위한 Jquery-cookie 임포트
-src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"
+src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -53,8 +53,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 // 메인화면 로드시 유저정보 확인
 // 로그인 쿠키가 존재하면 로그인 상태
-$(document).ready(function ()
-{
+$(document).ready(function () {
     // user 정보
     setUserInfo()
     setIndexPage()
@@ -69,8 +68,8 @@ function setUserInfo() {
         type: "POST",
         url: "/index",
         contentType: 'application/json',
-        data: JSON.stringify( {
-            "login_token" : token
+        data: JSON.stringify({
+            "login_token": token
         }),
         success: function (response) {
             if (response['result'] === 'success') {
@@ -90,8 +89,7 @@ function setUserInfo() {
 
 // 로그아웃 
 
-function logOut()
-{
+function logOut() {
     $.removeCookie('loginToken', {path: '/'})
     alert('로그아웃 되었습니다.')
     window.location.href = '/'
@@ -112,8 +110,8 @@ function setIndexPage() {
         type: "POST",
         url: "/api/index",
         contentType: 'application/json',
-        data: JSON.stringify( {
-            "category" : "all"
+        data: JSON.stringify({
+            "category": "all"
         }),
         success: function (response) {
             if (response['result'] === 'success') {
@@ -121,14 +119,12 @@ function setIndexPage() {
                 let content = $.parseJSON(response['subs'])
                 console.log(content)
                 subs.empty()
-                main_logo.attr("src","../assets/img/index/index_main.png")
-                selected_sub.css("color","red")
-                $.each(content, function (index, item)
-                {
+                main_logo.attr("src", "../assets/img/index/index_main.png")
+                selected_sub.css("color", "red")
+                $.each(content, function (index, item) {
                     subs.append(`
-                        <div class="col-md-6 col-lg-4 mb-5">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal"
-                                 data-bs-target="#portfolioModal1">
+                        <div class="col-md-6 col-lg-4 mb-5" onclick=javascript:ToDetail('${item.subscribe_name}')>
+                            <div class="portfolio-item mx-auto">
                                 <div
                                     class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                     <div class="portfolio-item-caption-content text-center text-white"><i
@@ -157,8 +153,8 @@ function selectIndexPage(category) {
         type: "POST",
         url: "/api/SelectIndex",
         contentType: 'application/json',
-        data: JSON.stringify( {
-            "category" : category
+        data: JSON.stringify({
+            "category": category
         }),
         success: function (response) {
             if (response['result'] === 'success') {
@@ -166,14 +162,12 @@ function selectIndexPage(category) {
                 let content = $.parseJSON(response['subs'])
                 console.log(content)
                 subs.empty()
-                main_logo.attr("src","../assets/img/index/index_"+category+".png")
+                main_logo.attr("src", "../assets/img/index/index_" + category + ".png")
 
-                $.each(content, function (index, item)
-                {
+                $.each(content, function (index, item) {
                     subs.append(`
-                        <div class="col-md-6 col-lg-4 mb-5">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal"
-                                 data-bs-target="#portfolioModal1">
+                        <div class="col-md-6 col-lg-4 mb-5" onclick=ToDetail(${item.subscribe_name})>
+                            <div class="portfolio-item mx-auto">
                                 <div
                                     class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                     <div class="portfolio-item-caption-content text-center text-white"><i
@@ -193,12 +187,150 @@ function selectIndexPage(category) {
     })
 }
 
+
+function ToRecommand() {
+    request_category.attr("value", nowCategory)
+}
+
 // 구독 이미지 클릭시 상세 페이지로 이동
-function ContentToDetail(subscribe_name) {
+
+function ToDetail(subscribe_name) {
+    $.ajax({
+        type: "GET",
+        url: "/detail",
+        data: {"subscribe_name": subscribe_name},
+        success: function (response) {
+            window.location.href = "/detail"
+        }
+    })
+}
+
+function compareMode() {
+    let subs = $('#subs')
+
+    // category 가 ALL 인 경우
+    if(nowCategory == "all") {
+        $.ajax({
+            type: "POST",
+            url: "/api/index",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "category": nowCategory
+            }),
+            success: function (response) {
+                if (response['result'] === 'success') {
+                    let content = $.parseJSON(response['subs'])
+                    console.log(content)
+                    subs.empty()
+                    $.each(content, function (index, item) {
+                            subs.append(`
+                        <div class="col-md-6 col-lg-4 mb-5" >
+                            <input class="form-check-input" type = "checkbox" name="compare_item" value="${item.subscribe_name}">
+
+                            <div class="portfolio-item mx-auto">
+                                <div
+                                    class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i
+                                        class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                
+                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                     alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
+                                <span class="sub-title">${item.subscribe_name}</span>
+                            </div>
+                        </div>
+                    `)
+                        }
+                    )
+
+                }
+
+            }
+        })
+
+        $('#compareBtn').empty()
+        $('#compareBtn').append(`<br>
+                 <button class="btn btn-xl btn-outline-primary" onclick="ToCompare()">
+                    <i class="fas fa-download me-2"></i>
+                    2개를 선택해주세요
+                </button>
+                </form>
+        `)
+    }
+    else
+    {
+        $.ajax({
+            type: "POST",
+            url: "/api/SelectIndex",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "category": nowCategory
+            }),
+            success: function (response) {
+                if (response['result'] === 'success') {
+                    let content = $.parseJSON(response['subs'])
+                    console.log(content)
+                    subs.empty()
+                    $.each(content, function (index, item) {
+                            subs.append(`
+                        <div class="col-md-6 col-lg-4 mb-5" >
+                            <input class="form-check-input" type = "checkbox" name="compare_item" value="${item.subscribe_name}">
+
+                            <div class="portfolio-item mx-auto">
+                                <div
+                                    class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i
+                                        class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                
+                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                     alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
+                                <span class="sub-title">${item.subscribe_name}</span>
+                            </div>
+                        </div>
+                    `)
+                        }
+                    )
+
+                }
+
+            }
+        })
+
+        $('#compareBtn').empty()
+        $('#compareBtn').append(`<br>
+                 <button class="btn btn-xl btn-outline-primary" onclick="ToCompare()">
+                    <i class="fas fa-download me-2"></i>
+                    2개를 선택해주세요
+                </button>
+                </form>
+        `)
+    }
 }
 
 
-function ToRecommand()
-{
-    request_category.attr("value",nowCategory)
+function ToCompare() {
+    let chkArray = new Array()
+    let count = $('input:checkbox[name=compare_item]:checked').length
+
+    if (count == 2) {
+        $('input:checkbox[name=compare_item]:checked').each(function () {
+            chkArray.push(this.value)
+        })
+        let sub1 = chkArray.pop()
+        let sub2 = chkArray.pop()
+        $.ajax({
+            type: "GET",
+            url: "/compare",
+            data: {
+                "sub1": sub1,
+                "sub2": sub2
+            }, success: function (response) {
+                window.location.href = "/compare"
+            }
+        })
+    } else {
+        alert("2개를 선택해주세요.")
+    }
+
 }
