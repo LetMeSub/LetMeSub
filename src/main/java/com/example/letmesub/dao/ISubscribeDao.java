@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface ISubscribeDao {
-    List<SubscribeDto> list();
+    List<SubscribeDto> list(String category);
 }
