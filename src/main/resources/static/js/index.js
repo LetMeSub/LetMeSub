@@ -97,6 +97,11 @@ function logOut()
     window.location.href = '/'
 }
 
+//현재 카테고리를 담는 전역변수
+let nowCategory = "all"
+let request_category = $('#request_category')
+request_category.hide()
+
 // index 페이지 처음 실행 화면 , 구독 서비스들 모두 나옴
 function setIndexPage() {
     let subs = $('#subs')
@@ -112,6 +117,7 @@ function setIndexPage() {
         }),
         success: function (response) {
             if (response['result'] === 'success') {
+                nowCategory = "all"
                 let content = $.parseJSON(response['subs'])
                 console.log(content)
                 subs.empty()
@@ -156,6 +162,7 @@ function selectIndexPage(category) {
         }),
         success: function (response) {
             if (response['result'] === 'success') {
+                nowCategory = category
                 let content = $.parseJSON(response['subs'])
                 console.log(content)
                 subs.empty()
@@ -190,7 +197,8 @@ function selectIndexPage(category) {
 function ContentToDetail(subscribe_name) {
 }
 
+
 function ToRecommand()
 {
-
+    request_category.attr("value",nowCategory)
 }
