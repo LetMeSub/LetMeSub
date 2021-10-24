@@ -7,4 +7,10 @@
     <select id="list" resultType="com.example.letmesub.dto.SubscribeDto">
         select * from subscribe WHERE subscribe_category = #{param1}
     </select>
+    <select id="viewCount" resultType="_int">
+        select subscribe_count from subscribe WHERE subscribe_name = #{param1}
+    </select>
+    <insert id="updateCount">
+        update subscribe SET subscribe_count = subscribe_count + 1 WHERE subscribe_name = #{param1}
+    </insert>
 </mapper>

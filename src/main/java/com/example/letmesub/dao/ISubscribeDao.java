@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface ISubscribeDao {
     List<SubscribeDto> list(String category);
+    int viewCount(String name);
+    int updateCount(String name);
 }

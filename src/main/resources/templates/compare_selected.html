@@ -47,6 +47,14 @@
 
         <!-- Logo Section-->
         <header class="masthead bg-primary">
+
+            <section id="choose">
+
+                <h2 class="page-section-heading text-center text-uppercase text-white" th:text="${like_p}+'%의 사용자가 '+ ${like} + '를 선호합니다.'"><br><br><br></h2>
+
+            </section>
+
+            <br><br><br>
             <div class="row" >
                 <div class="col-lg-4 text-center" style="float: none; margin:0 auto; ">
                     <p class="lead">
@@ -148,32 +156,6 @@
         
                         </div>
                         </div>
-                        </section>
-
-                        <section id="choose">
-
-                            <h2 class="page-section-heading text-center text-uppercase text-white">어떤 서비스를 선호하시나요?<br><br><br></h2>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-4 text-center" style="float: none; margin:0 auto;">
-                                        <p class="lead"> 
-                                            <a class="btn btn-info btn-lg"
-                                               th:href="'/compare_selected?like='+${subs1}+'&subscribe1='+${subs1}+'&subscribe2='+${subs2}"
-                                               th:text="${subs1}+'를 선호합니다'"></a>
-                                        </p>
-                                    </div>
-                    
-                                    <div class="col-lg-4 text-center" style="float: none; margin:0 auto;">
-                                        <p class="lead"> 
-                                            <a class="btn btn-info btn-lg"
-                                                    th:href="'/compare_selected?like='+${subs2}+'&subscribe1='+${subs1}+'&subscribe2='+${subs2}"
-                                                    th:text="${subs2}+'를 선호합니다'"></a>
-                                        </p>
-                                    </div>
-                    
-                                    </div>
-                            </div>
-                
                         </section>
         </header>
         
