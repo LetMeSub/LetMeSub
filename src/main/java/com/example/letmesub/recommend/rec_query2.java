@@ -23,4 +23,14 @@ public class  rec_query2 {
         public String q5 = "5. 한국음악을 좋아하시나요?";
         public String q6 = "6. 한국음악을 좋아하시나요?";
     }
+
+    public static class shopping{
+        public String category = "shopping";
+        public String q1 = "1. 쇼핑을 좋아하시나요?";
+        public String q2 = "2. 쇼핑을 좋아하시나요?";
+        public String q3 = "3. 쇼핑을 좋아하시나요?";
+        public String q4 = "4. 쇼핑을 좋아하시나요?";
+        public String q5 = "5. 쇼핑을 좋아하시나요?";
+        public String q6 = "6. 쇼핑을 좋아하시나요?";
+    }
 }
