@@ -19,8 +19,8 @@ public class CompareController
     @GetMapping("/compare")
     public String compare(Model model, HttpServletRequest req){
 
-        String subscribe1 = "netflix";
-        String subscribe2 = "watcha";
+        String subscribe1 = req.getParameter("subscribe1");
+        String subscribe2 = req.getParameter("subscribe2");
         model.addAttribute("subs1", subscribe1);
         model.addAttribute("subs2", subscribe2);
 
