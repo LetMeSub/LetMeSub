@@ -8,4 +8,5 @@ import java.util.List;
 @Mapper
 public interface ICommentDao {
     List<CommentDto> commentList(String name);
+    int insertComment(String context, String u_id, String subscribe);
 }

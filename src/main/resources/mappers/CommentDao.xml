@@ -7,4 +7,7 @@
     <select id="commentList" resultType="com.example.letmesub.dto.CommentDto">
         select * from comment WHERE subscribe_name = #{param1}
     </select>
+    <insert id="insertComment">
+        INSERT INTO comment (comment_contents, user_id, subscribe_name) values (#{param1}, #{param2}, #{param3})
+    </insert>
 </mapper>

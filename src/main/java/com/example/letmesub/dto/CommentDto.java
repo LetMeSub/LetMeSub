@@ -12,6 +12,4 @@ public class CommentDto
     String comment_context;
     String comment_user_id;
     String comment_subscribe_name;
-
-
 }
