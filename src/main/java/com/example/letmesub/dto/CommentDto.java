@@ -6,14 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Data
 @AllArgsConstructor
-public class Comment
+public class CommentDto
 {
     int comment_num;
-    String comment_subscribe_name;
-    String comment_user_id;
     String comment_context;
-
-
+    String comment_user_id;
+    String comment_subscribe_name;
 
 
 }
