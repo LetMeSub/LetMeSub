@@ -13,4 +13,7 @@
     <insert id="updateCount">
         update subscribe SET subscribe_count = subscribe_count + 1 WHERE subscribe_name = #{param1}
     </insert>
+    <select id="viewAll" resultType="com.example.letmesub.dto.SubscribeDto">
+        select * from subscribe WHERE subscribe_name = #{param1}
+    </select>
 </mapper>

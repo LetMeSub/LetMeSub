@@ -10,4 +10,5 @@ public interface ISubscribeDao {
     List<SubscribeDto> list(String category);
     int viewCount(String name);
     int updateCount(String name);
+    SubscribeDto viewAll(String name);
 }
