@@ -195,14 +195,8 @@ function ToRecommand() {
 // 구독 이미지 클릭시 상세 페이지로 이동
 
 function ToDetail(subscribe_name) {
-    $.ajax({
-        type: "GET",
-        url: "/detail",
-        data: {"subscribe_name": subscribe_name},
-        success: function (response) {
-            window.location.href = "/detail"
-        }
-    })
+    window.location.href = "/detail?subscribe_name="+subscribe_name
+
 }
 
 function compareMode() {

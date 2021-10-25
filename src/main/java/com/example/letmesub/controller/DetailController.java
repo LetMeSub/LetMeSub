@@ -21,7 +21,8 @@ public class DetailController
     public String detail(Model model, HttpServletRequest req)
     {
 
-        String subscribe = "netflix";
+        String subscribe = req.getParameter("subscribe_name");
+        System.out.println(subscribe);
         int rate = subscribeDao.viewAll(subscribe).getSubscribe_rate();
         String desc = subscribeDao.viewAll(subscribe).getSubscribe_describe();
 
