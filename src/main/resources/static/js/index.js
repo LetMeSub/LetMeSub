@@ -209,7 +209,7 @@ function compareMode() {
     let subs = $('#subs')
 
     // category 가 ALL 인 경우
-    if(nowCategory == "all") {
+    if (nowCategory == "all") {
         $.ajax({
             type: "POST",
             url: "/api/index",
@@ -256,9 +256,7 @@ function compareMode() {
                 </button>
                 </form>
         `)
-    }
-    else
-    {
+    } else {
         $.ajax({
             type: "POST",
             url: "/api/SelectIndex",
@@ -312,25 +310,19 @@ function compareMode() {
 function ToCompare() {
     let chkArray = new Array()
     let count = $('input:checkbox[name=compare_item]:checked').length
-
+    let result = ""
     if (count == 2) {
         $('input:checkbox[name=compare_item]:checked').each(function () {
             chkArray.push(this.value)
         })
         let sub1 = chkArray.pop()
         let sub2 = chkArray.pop()
-        $.ajax({
-            type: "GET",
-            url: "/compare",
-            data: {
-                "sub1": sub1,
-                "sub2": sub2
-            }, success: function (response) {
-                window.location.href = "/compare"
-            }
-        })
-    } else {
-        alert("2개를 선택해주세요.")
+        result = "compare?subscribe1=" + sub1 + "&subscribe2=" + sub2
+        window.location.href = result
+    }
+    else
+        {
+            alert("2개를 선택해주세요.")
+        }
     }
 
-}
