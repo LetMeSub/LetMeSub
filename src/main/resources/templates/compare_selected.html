@@ -20,6 +20,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/index.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
 </svg>
@@ -145,18 +146,95 @@
                     <!-- About Section Heading-->
                     <h2 class="page-section-heading text-center text-uppercase text-white">별점 비교 섹션</h2>
                     <!-- Icon Divider-->
-            
+
+                    <!-- rate(육각형 능력치)받아서 유저에게 보여줌 -->
+                    <input type="hidden" id="rate1" th:value="${rate1}">
+                    <input type="hidden" id="rate2" th:value="${rate2}">
                     <!-- About Section Content-->
                     <div class="row">
                         <div class="col-lg-6" style="float: none; margin:0 auto;">
-                            <p class="lead"> 
-                                <img class="img-fluid " src="../assets/img/portfolio/circus.png" alt="..." />
-                            </p>
+                            <canvas id="radar-chart" width="250" height="250"></canvas>
+                            <script>
+                                var rate1 = document.getElementById("rate1");
+                                //밸류구함
+                                var rate_value1 = rate1.value;
+                                //정수화함
+                                rate_value1=rate_value1.toString()
+
+                                var rate2 = document.getElementById("rate2");
+                                //밸류구함
+                                var rate_value2 = rate2.value;
+                                //정수화함
+                                rate_value2=rate_value2.toString()
+
+                                var sub1name = document.getElementById("sub1name");
+                                var sub1name = sub1name.value;
+                                var sub2name = document.getElementById("sub2name");
+                                var sub2name = sub2name.value;
+
+                                new Chart(document.getElementById("radar-chart"), {
+                                    type: 'radar',
+                                    data: {  labels: [
+                                            '접근성',
+                                            '편의성',
+                                            '차별성',
+                                            '실용성',
+                                            '합리성',
+                                            '창의성'
+                                        ],
+                                        datasets: [{
+                                            label: sub1name,
+                                            data: [rate_value1[0]*10, rate_value1[1]*10, rate_value1[2]*10,
+                                                rate_value1[3]*10, rate_value1[4]*10, rate_value1[5]*10],
+                                            fill: true,
+                                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                            borderColor: 'rgb(255, 99, 132)',
+                                            pointBackgroundColor: 'rgb(255, 99, 132)',
+                                            pointBorderColor: '#fff',
+                                            pointHoverBackgroundColor: '#fff',
+                                            pointHoverBorderColor: 'rgb(255, 99, 132)'
+                                        },
+                                            {
+                                                label: sub2name,
+                                                data: [rate_value2[0]*10, rate_value2[1]*10, rate_value2[2]*10,
+                                                    rate_value2[3]*10, rate_value2[4]*10, rate_value2[5]*10],
+                                                fill: true,
+                                                backgroundColor: 'rgba(139, 0, 255, 0.2)',
+                                                borderColor: 'rgb(139, 0, 255)',
+                                                pointBackgroundColor: 'rgb(139, 0, 255)',
+                                                pointBorderColor: '#fff',
+                                                pointHoverBackgroundColor: '#fff',
+                                                pointHoverBorderColor: 'rgb(139, 0, 255)'
+                                            }]
+                                    },
+                                    options: {
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: '구독 서비스간 특성비교',    //그래프 제목표시
+
+                                            }
+                                        }
+                                        , scales: {
+                                            r: {
+                                                angleLines: {
+                                                    display: true   //눈금사이 줄
+                                                },
+                                                suggestedMin: 0,     //최소치
+                                                suggestedMax: 100,   //최대치
+                                                ticks :{
+                                                    display: false  //줄간격마다 숫자표시
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
-        
-                        </div>
-                        </div>
-                        </section>
+
+                    </div>
+                </div>
+            </section>
         </header>
         
 

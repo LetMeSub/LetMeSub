@@ -20,8 +20,17 @@ public class CompareController
     public String compare(Model model, HttpServletRequest req){
         String subscribe1 = req.getParameter("subscribe1");
         String subscribe2 = req.getParameter("subscribe2");
+
+        //별점 값 구함
+        int rate1 = subscribeDao.viewAll(subscribe1).getSubscribe_rate();
+        int rate2 = subscribeDao.viewAll(subscribe2).getSubscribe_rate();
+
         model.addAttribute("subs1", subscribe1);
         model.addAttribute("subs2", subscribe2);
+        model.addAttribute("rate1", rate1);
+        model.addAttribute("rate2", rate2);
+
+
 
         return "compare";
     }
@@ -34,6 +43,11 @@ public class CompareController
         String subscribe1 = req.getParameter("subscribe1");
         String subscribe2 = req.getParameter("subscribe2");
 
+       //별점 값 구함
+       int rate1 = subscribeDao.viewAll(subscribe1).getSubscribe_rate();
+       int rate2 = subscribeDao.viewAll(subscribe2).getSubscribe_rate();
+
+        //유저 선호도 반영하여 db에 추가
         subscribeDao.updateCount(likesubscribe);
        int like_u_num;
        int nonlike_u_num;
@@ -57,6 +71,10 @@ public class CompareController
        model.addAttribute("like", likesubscribe);
         model.addAttribute("subs1", subscribe1);
         model.addAttribute("subs2", subscribe2);
+       model.addAttribute("rate1", rate1);
+       model.addAttribute("rate2", rate2);
+
+
         return "compare_selected";
    }
 
