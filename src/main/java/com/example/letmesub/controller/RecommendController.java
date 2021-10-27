@@ -66,6 +66,7 @@ public class RecommendController
             q_list.add(category_shopping.q5);
             q_list.add(category_shopping.q6);
         }
+        //카테고리정보 모델에 넣어서 보냄
         model.addAttribute("category", user_selected_category);
 
         //첫 접속시 count값 할당(값 할당해야 html오류안남->각 버튼의 하이퍼링크들, n번째 질문 1로 설정함)
@@ -76,6 +77,7 @@ public class RecommendController
             model.addAttribute("query", query);
             return "recommend";
         }
+
 
         //html에서 값 받아옴
 
@@ -92,9 +94,17 @@ public class RecommendController
         }
         list.add(uweight);
         System.out.println(list);
+
+        //뒤로가기를 했다가 다시하는 등 list개수와 질문개수 안맞을때 인덱스페이지로 이동함
+        if(qcount != list.size()+1){
+            //다시 이 페이지에서 접속해도 사용할수있게 list클리어 후 세션에 반영함
+            list.clear();
+            session.setAttribute("weight",list);
+            return "index";
+        }
         
         //모델에 query 전달, 구조상 사이즈 넘어가는 것은""로 처리했음
-        if(qcount-1 == q_list.size()) {
+        if(qcount == q_list.size()+1) {
             model.addAttribute("query", "");
         }
         else {
