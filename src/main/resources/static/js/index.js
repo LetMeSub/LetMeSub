@@ -97,6 +97,8 @@ function logOut() {
 
 //현재 카테고리를 담는 전역변수
 let nowCategory = "all"
+// 현재 비교모드 상태인지 확인 하는 변수 0일경우 x 1일경우 비교
+let comparemode = 0
 let request_category = $('#request_category')
 request_category.hide()
 
@@ -123,20 +125,36 @@ function setIndexPage() {
                 selected_sub.css("color", "red")
                 $.each(content, function (index, item) {
                     subs.append(`
-                        <div class="col-md-6 col-lg-4 mb-5" onclick=javascript:ToDetail('${item.subscribe_name}')>
-                            <div class="portfolio-item mx-auto">
+                        <div class="col-md-6 col-lg-4 mb-5 " onclick=javascript:ToDetail('${item.subscribe_name}')>
+                            <div class="portfolio-item mx-auto card">
                                 <div
                                     class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
+                                  
                                 </div>
-                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <span class="sub-title">${item.subscribe_name}</span>
+                                <div class="sub-title card-body">
+                                    <h4 class="card-title">${item.subscribe_name}</h4>
+                                
+                                </div>
                             </div>
                         </div>
                     `)
                 })
+                if (comparemode == 1)
+                {
+                    $('#compareBtn').empty()
+                    $('#compareBtn').append
+                    (`<br>
+                            <div class="text-center mt-4" id="compareBtn">
+                                <a class="btn btn-xl btn-outline-primary" onclick="compareMode()" >
+                                    <i class="fas fa-download me-2"></i>
+                                    비교하기
+                                </a>
+                            </div>
+                   `)
+                comparemode = 0
+                }
 
             }
 
@@ -166,20 +184,36 @@ function selectIndexPage(category) {
 
                 $.each(content, function (index, item) {
                     subs.append(`
-                        <div class="col-md-6 col-lg-4 mb-5" onclick=javascript:ToDetail('${item.subscribe_name}')>
-                            <div class="portfolio-item mx-auto">
+                        <div class="col-md-6 col-lg-4 mb-5 " onclick=javascript:ToDetail('${item.subscribe_name}')>
+                            <div class="portfolio-item mx-auto card">
                                 <div
                                     class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
+                                  
                                 </div>
-                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <span class="sub-title">${item.subscribe_name}</span>
+                                <div class="sub-title card-body">
+                                    <h4 class="card-title">${item.subscribe_name}</h4>
+                                
+                                </div>
                             </div>
                         </div>
                     `)
                 })
+                if (comparemode == 1)
+                {
+                    $('#compareBtn').empty()
+                    $('#compareBtn').append
+                    (`<br>
+                        <div class="text-center mt-4" id="compareBtn">
+                            <a class="btn btn-xl btn-outline-primary" onclick="compareMode()" >
+                                <i class="fas fa-download me-2"></i>
+                                비교하기
+                            </a>
+                        </div>
+                     `)
+                    comparemode = 0
+                }
 
             }
 
@@ -195,7 +229,7 @@ function ToRecommand() {
 // 구독 이미지 클릭시 상세 페이지로 이동
 
 function ToDetail(subscribe_name) {
-    window.location.href = "/detail?subscribe_name="+subscribe_name
+    window.location.href = "/detail?subscribe_name=" + subscribe_name
 
 }
 
@@ -218,21 +252,22 @@ function compareMode() {
                     subs.empty()
                     $.each(content, function (index, item) {
                             subs.append(`
-                        <div class="col-md-6 col-lg-4 mb-5" >
-                            <input class="form-check-input" type = "checkbox" name="compare_item" value="${item.subscribe_name}">
-
-                            <div class="portfolio-item mx-auto">
-                                <div
-                                    class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
+                        <div class="col-md-6 col-lg-4 mb-5 ">
+                            <div class="portfolio-item mx-auto card">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                  
                                 </div>
-                                
-                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <span class="sub-title">${item.subscribe_name}</span>
+                                <div class="sub-title card-body">
+                                    <h4 class="card-title">${item.subscribe_name}</h4>
+                                
+                                </div>
                             </div>
+                            <input class="btn-check" id="check-${item.subscribe_name}" type = "checkbox" name="compare_item" autocomplete="off" value="${item.subscribe_name}">
+                            <label class="btn btn-outline-primary" for="check-${item.subscribe_name}">비교선택</label>
                         </div>
+
                     `)
                         }
                     )
@@ -250,6 +285,7 @@ function compareMode() {
                 </button>
                 </form>
         `)
+        comparemode = 1
     } else {
         $.ajax({
             type: "POST",
@@ -265,21 +301,22 @@ function compareMode() {
                     subs.empty()
                     $.each(content, function (index, item) {
                             subs.append(`
-                        <div class="col-md-6 col-lg-4 mb-5" >
-                            <input class="form-check-input" type = "checkbox" name="compare_item" value="${item.subscribe_name}">
-
-                            <div class="portfolio-item mx-auto">
-                                <div
-                                    class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
+                        <div class="col-md-6 col-lg-4 mb-5 ">
+                            <div class="portfolio-item mx-auto card">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                  
                                 </div>
-                                
-                                <img class="img-fluid "  src="../assets/img/subs/${item.subscribe_name}.png"
+                                <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <span class="sub-title">${item.subscribe_name}</span>
+                                <div class="sub-title card-body">
+                                    <h4 class="card-title">${item.subscribe_name}</h4>
+                                
+                                </div>
                             </div>
+                            <input class="btn-check" id="check-${item.subscribe_name}" type = "checkbox" name="compare_item" autocomplete="off" value="${item.subscribe_name}">
+                            <label class="btn btn-outline-primary" for="check-${item.subscribe_name}">비교선택</label>
                         </div>
+
                     `)
                         }
                     )
@@ -298,6 +335,8 @@ function compareMode() {
                 </form>
         `)
     }
+    comparemode = 1
+
 }
 
 
@@ -313,10 +352,8 @@ function ToCompare() {
         let sub2 = chkArray.pop()
         result = "compare?subscribe1=" + sub1 + "&subscribe2=" + sub2
         window.location.href = result
+    } else {
+        alert("2개를 선택해주세요.")
     }
-    else
-        {
-            alert("2개를 선택해주세요.")
-        }
-    }
+}
 
