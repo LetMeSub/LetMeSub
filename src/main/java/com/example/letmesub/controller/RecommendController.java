@@ -34,7 +34,9 @@ public class RecommendController
     {
         //선택한 카테고리 가져옴 인덱스에서 쿼리스트링으로 정보 받을 예정
         String qcategory = req.getParameter("subscribe_category");
-
+        if(qcategory.equals("all")) {
+            return "recommend_c_select";
+        }
         //나중에 합칠때 사용할 유저가 선택한 서비스 카테고리
         String user_selected_category= qcategory;
         System.out.println(user_selected_category);
