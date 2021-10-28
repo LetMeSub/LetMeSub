@@ -32,7 +32,7 @@ function register() {
             success: function (response) {
                 if (response['result'] == 'success') {
                     alert('회원가입이 완료되었습니다.')
-                    window.location.assign('/');
+                    window.location.href = "/"
                 } else {
                     alert(response[''])
                 }

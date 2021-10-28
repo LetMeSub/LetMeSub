@@ -166,7 +166,7 @@ function selectIndexPage(category) {
 
                 $.each(content, function (index, item) {
                     subs.append(`
-                        <div class="col-md-6 col-lg-4 mb-5" onclick=ToDetail(${item.subscribe_name})>
+                        <div class="col-md-6 col-lg-4 mb-5" onclick=javascript:ToDetail('${item.subscribe_name}')>
                             <div class="portfolio-item mx-auto">
                                 <div
                                     class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -246,7 +246,7 @@ function compareMode() {
         $('#compareBtn').append(`<br>
                  <button class="btn btn-xl btn-outline-primary" onclick="ToCompare()">
                     <i class="fas fa-download me-2"></i>
-                    2개를 선택해주세요
+                    2개를 선택하고 눌러주세요
                 </button>
                 </form>
         `)

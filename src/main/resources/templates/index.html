@@ -62,7 +62,8 @@
                 <!-- Masthead Subheading-->
                 <form action="recommend" id = "ToRecommandBtn" method="get" name="category_request_form">
                     <input type="text" name = "subscribe_category" id="request_category"> <!-- Form 데이터를 넘길떄 사용하는 태그 안보이게 세팅해놓음 -->
-                    <a class="masthead-subheading font-weight-light mb-0 btn-cursor" onclick="ToRecommand()" href="javascript:document.category_request_form.submit();" style="color: white;text-decoration: none;">찾으러 가기</a>
+                    <!--href="javascript:document.category_request_form.submit();"-->
+                    <button class="recommand_btn" onclick="ToRecommand()" type="submit" >찾으러 가기</button>
                 </form>
             </div>
         </header>

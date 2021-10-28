@@ -30,11 +30,11 @@ function login() {
                 if (response['result'] == 'success') {
                     alert('로그인에 성공하였습니다!');
                     $.cookie('loginToken', response['token']);
-                    window.location.href = "/"
+                    window.location.href="/"
                 } else {
                     alert('로그인에 실패했습니다!')
                 }
             }
         })
     }
-}
+x}
