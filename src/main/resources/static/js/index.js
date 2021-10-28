@@ -90,8 +90,23 @@ function setUserInfo() {
 // 로그아웃 
 
 function logOut() {
+    let token = $.cookie('loginToken')
+    $.ajax({
+        type: "POST",
+        url : "/api/logout",
+        contentType: 'application/json',
+        data: JSON.stringify({
+            "login_token": token
+        }),
+        success: function (response) {
+            if (response['result'] == 'success')
+            {
+                alert('로그아웃 되었습니다.')
+            }
+
+        }
+    })
     $.removeCookie('loginToken', {path: '/'})
-    alert('로그아웃 되었습니다.')
     window.location.href = '/'
 }
 

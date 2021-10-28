@@ -108,5 +108,28 @@ public class UserController
         return result;
     }
 
+    @PostMapping("/api/logout")
+    public Map<String, String> logout(@RequestBody Map<String, String>LoginToken, HttpServletRequest request)
+    {
+        Map<String, String> result = new HashMap<>();
+        String token = LoginToken.get("login_token");
+        System.out.println("Token:"+token);
+        // 세션을 가져옴
+        HttpSession session = request.getSession();
+        System.out.println("session:"+session.getAttribute("user"));
+
+        if (token.equals(session.getAttribute("user")))
+        {
+            session.removeAttribute("user");
+            result.put("result","success");
+        }else
+        {
+            result.put("result","fail");
+        }
+        System.out.println("session:"+session.getAttribute("user"));
+
+        return result;
+
+    }
 
 }
