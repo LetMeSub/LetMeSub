@@ -19,13 +19,25 @@ public class IndexController
     @PostMapping("/index")
     public Map<String, String> SetUserInfo(@RequestBody Map<String, String> GivenToken, HttpServletRequest request)
     {
-        // 세션 가져오기
-        HttpSession session = request.getSession();
-        String sessionId = session.getAttribute("user").toString();
-        System.out.println("session: " + sessionId);
+        String sessionId = "";
+
+        try
+        {
+            // 세션 가져오기
+            HttpSession session = request.getSession();
+            if (session.getAttribute("user") != null)
+            {
+                sessionId = session.getAttribute("user").toString();
+            }
+
+
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         // Token 확인
         String LoginToken = GivenToken.get("login_token");
-        System.out.println("Token:" + LoginToken);
+
 
         // 반환값
         Map<String, String> result = new HashMap<>();
@@ -39,7 +51,6 @@ public class IndexController
         {
             result.put("result", "fail");
         }
-        System.out.println(result.get("result"));
         return result;
 
     }
@@ -52,7 +63,6 @@ public class IndexController
     public Map<String, String> SetIndexContent(@RequestBody String category)
     {
         Map<String, String> result = new HashMap<>();
-        System.out.println(category);
 
         try
         {
@@ -64,8 +74,6 @@ public class IndexController
             ObjectMapper objectMapper = new ObjectMapper();
 
             String json = objectMapper.writeValueAsString(SelectedList);
-            System.out.println(json);
-
 
             // 반환값
             result.put("result", "success");
@@ -84,7 +92,6 @@ public class IndexController
     public Map<String, String> SetSelectIndexContent(@RequestBody Map<String, String> category)
     {
         Map<String, String> result = new HashMap<>();
-        System.out.println(category);
 
         try
         {
@@ -94,9 +101,6 @@ public class IndexController
             ObjectMapper objectMapper = new ObjectMapper();
 
             String json = objectMapper.writeValueAsString(SelectedList);
-            System.out.println(json);
-
-
             // 반환값
             result.put("result", "success");
             result.put("subs", json);
