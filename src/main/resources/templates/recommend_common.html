@@ -52,13 +52,21 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- Masthead Subheading-->
-        <div class="col-lg-7 mb-5 mb-lg-0">
-            <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend_common?common_query_count='+${common_query_count+1}+'&common_weight=1&subscribe_category='+${category}}">
-                1
+        <div class="col-lg-10 mb-5 mb-lg-0">
+            <dis class ="row">
+            <div class="col-md-6">
+                <h3 class="text-uppercase mb-0"  th:text="${q_query_1}"></h3><br/>
+            <a class="btn btn-light btn-social mx-1" style="white-space:nowrap;" th:href="@{'/recommend_common?common_query_count='+${common_query_count+1}+'&common_weight=0&subscribe_category='+${category}}">
+                선택
             </a>
-            <a class="btn btn-outline-light btn-social mx-1" th:href="@{'/recommend_common?common_query_count='+${common_query_count+1}+'&common_weight=2&subscribe_category='+${category}}">
-                2
+            </div>
+                <div class="col-md-6">
+                    <h3 class="text-uppercase mb-0"  th:text="${q_query_2}"></h3><br/>
+            <a class="btn btn-light btn-social mx-2" style="white-space:nowrap;" th:href="@{'/recommend_common?common_query_count='+${common_query_count+1}+'&common_weight=1&subscribe_category='+${category}}">
+                선택
             </a>
+            </div>
+            </dis>
         </div>
         <!-- Masthead Avatar Image-->
         <img class="masthead-avatar mb-5" src="assets/img/LET ME SUB - MarkMaker Logo.svg" alt="..." />

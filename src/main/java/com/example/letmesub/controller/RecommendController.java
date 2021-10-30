@@ -94,7 +94,11 @@ public class RecommendController
         //weight 세션 처리
         //세션에 arraylist로 유저가 입력한 가중치 저장
         ArrayList<Integer> list = (ArrayList)session.getAttribute("weight");
+        System.out.println("dd"+(ArrayList)session.getAttribute("weight"));
         ArrayList<Integer> common_list = (ArrayList)session.getAttribute("common_weight");
+        System.out.println(user_selected_category);
+        System.out.println("유저가 입력한 공통질문의 대답은 "+common_list);
+        System.out.println("유저가 입력한 카테고리별 질문의 대답은 "+list);
         if(list==null){
             list = new ArrayList<Integer>();
             session.setAttribute("weight",list);
@@ -109,6 +113,7 @@ public class RecommendController
             //다시 이 페이지에서 접속해도 사용할수있게 list클리어 후 세션에 반영함
             list.clear();
             session.setAttribute("weight",list);
+            session.setAttribute("common_weight",list);
             return "index";
         }
         
@@ -168,8 +173,90 @@ public class RecommendController
                 {weight_list.set(4, weight_list.get(4)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
             }
-            else if(user_selected_category.equals("music")){}
-            else if(user_selected_category.equals("shopping")){}
+            else if(user_selected_category.equals("music")){
+                //첫번째 공통질문에서 답이 1일경우 카테고리별질문 5,1에 가중치 더함
+                if(common_list.get(0)==1)
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                //첫번째 공통질문에서 답이 0일경우 카테고리별질문 3,6에 가중치 더함
+                else
+                {weight_list.set(2, weight_list.get(2)+2);
+                    weight_list.set(3, weight_list.get(3)+2);}
+                //두번째 공통질문에서 답이 1일경우 카테고리별질문 2,6에 가중치 더함
+                if(common_list.get(1)==1)
+                {weight_list.set(3, weight_list.get(3)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                //이하 동일
+                else
+                {weight_list.set(1, weight_list.get(1)+2);
+                    weight_list.set(4, weight_list.get(4)+2);}
+                if(common_list.get(2)==1)
+                {weight_list.set(2, weight_list.get(2)+2);
+                    weight_list.set(3, weight_list.get(3)+2);}
+                else
+                {weight_list.set(4, weight_list.get(4)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                if(common_list.get(3)==1)
+                {weight_list.set(1, weight_list.get(1)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                else
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(4, weight_list.get(4)+2);}
+                if(common_list.get(4)==1)
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                else
+                {weight_list.set(1, weight_list.get(1)+2);
+                    weight_list.set(3, weight_list.get(3)+2);}
+                if(common_list.get(5)==1)
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(1, weight_list.get(1)+2);}
+                else
+                {weight_list.set(2, weight_list.get(2)+2);
+                    weight_list.set(4, weight_list.get(4)+2);}
+            }
+            else if(user_selected_category.equals("shopping")){
+                //첫번째 공통질문에서 답이 1일경우 카테고리별질문 5,1에 가중치 더함
+                if(common_list.get(0)==1)
+                {weight_list.set(1, weight_list.get(1)+2);
+                    weight_list.set(2, weight_list.get(2)+2);}
+                //첫번째 공통질문에서 답이 0일경우 카테고리별질문 3,6에 가중치 더함
+                else
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(3, weight_list.get(3)+2);}
+                //두번째 공통질문에서 답이 1일경우 카테고리별질문 2,6에 가중치 더함
+                if(common_list.get(1)==1)
+                {weight_list.set(4, weight_list.get(4)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                //이하 동일
+                else
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(3, weight_list.get(3)+2);}
+                if(common_list.get(2)==1)
+                {weight_list.set(4, weight_list.get(4)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                else
+                {weight_list.set(2, weight_list.get(2)+2);
+                    weight_list.set(3, weight_list.get(3)+2);}
+                if(common_list.get(3)==1)
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(3, weight_list.get(3)+2);}
+                else
+                {weight_list.set(1, weight_list.get(1)+2);
+                    weight_list.set(4, weight_list.get(4)+2);}
+                if(common_list.get(4)==1)
+                {weight_list.set(0, weight_list.get(0)+2);
+                    weight_list.set(4, weight_list.get(4)+2);}
+                else
+                {weight_list.set(2, weight_list.get(2)+2);
+                    weight_list.set(5, weight_list.get(5)+2);}
+                if(common_list.get(5)==1)
+                {weight_list.set(1, weight_list.get(1)+2);
+                    weight_list.set(2, weight_list.get(2)+2);}
+                else
+                {weight_list.set(1, weight_list.get(1)+2);
+                    weight_list.set(4, weight_list.get(4)+2);}
+            }
 
             System.out.println("현제 카테고리별 가중치의 값은 "+list);
             System.out.println("최종적으로 더할 공통질문의 값은 "+weight_list);
@@ -200,6 +287,7 @@ public class RecommendController
 
             //다시 이 페이지에서 접속해도 사용할수있게 list클리어 후 세션에 반영함
             list.clear();
+            System.out.println("list클리어 세션값은" + list);
             session.setAttribute("weight",list);
             //비어있는 배열을 집어넣어서 공통질문도 다시 사용할수있게함
             session.setAttribute("common_weight",list);
@@ -256,10 +344,17 @@ public class RecommendController
         {
             //첫번째 질문 출력
             String query = q_list.get(0);
+            String q_query_1 = q_q_list.get(0);
+            String q_query_2 = q_q_list.get(1);
+
             model.addAttribute("common_query_count", 1);
             model.addAttribute("query", query);
+            model.addAttribute("q_query_1", q_query_1);
+            model.addAttribute("q_query_2", q_query_2);
             return "recommend_common";
         }
+
+
 
         //get으로 받은 출력한 질문의 번호
         int common_query_count = Integer.parseInt(req.getParameter("common_query_count"));
@@ -274,6 +369,7 @@ public class RecommendController
             list_common = new ArrayList<Integer>();
             session.setAttribute("common_weight",list_common);
         }
+
         //세션에 weight값 추가
         list_common.add(common_weight);
         //세션 콘솔창에 추가
@@ -288,19 +384,32 @@ public class RecommendController
             return "index";
         }
 
-        //모델에 query 전달, 구조상 사이즈 넘어가는 것은""로 처리했음
-        if(common_query_count == q_list.size()+1) {
-            model.addAttribute("query", "");
-        }
-        else {
-            model.addAttribute("query", q_list.get(common_query_count - 1));
-        }
-        //모델에 count 전달
-        model.addAttribute("common_query_count", common_query_count);
-
+        //마지막질문이면 값 넘어감
         if(common_query_count == 7){
             return "onlyredirectpage";
         }
+
+
+
+
+        //모델에 query 전달, 구조상 사이즈 넘어가는 것은""로 처리했음
+        if(common_query_count == q_list.size()+1) {
+            String q_query_1 = q_q_list.get(2*(common_query_count-1));
+            String q_query_2 = "";
+            model.addAttribute("query", "");
+            model.addAttribute("q_query_1", "");
+            model.addAttribute("q_query_2", "");
+        }
+        else {
+            String q_query_1 = q_q_list.get(2*(common_query_count-1));
+            String q_query_2 = q_q_list.get(2*(common_query_count-1)+1);
+            model.addAttribute("query", q_list.get(common_query_count - 1));
+            model.addAttribute("q_query_1", q_query_1);
+            model.addAttribute("q_query_2", q_query_2);
+        }
+
+        //모델에 count 전달
+        model.addAttribute("common_query_count", common_query_count);
 
         return "recommend_common";
     }

@@ -49,11 +49,11 @@ public class  rec_query2 {
 
     public static class shopping{
         public String category = "shopping";
-        public String q1 = "1. 쇼핑을 좋아하시나요?";
-        public String q2 = "2. 쇼핑을 좋아하시나요?";
-        public String q3 = "3. 쇼핑을 좋아하시나요?";
-        public String q4 = "4. 쇼핑을 좋아하시나요?";
-        public String q5 = "5. 쇼핑을 좋아하시나요?";
-        public String q6 = "6. 쇼핑을 좋아하시나요?";
+        public String q1 = "1. 쇼핑을 평소에 자주 하시나요?";
+        public String q2 = "2. 보기편한 UI를 선호하시나요?";
+        public String q3 = "3. 다양한 품목의 구매를 원하시나요?";
+        public String q4 = "4. 명품구매를 선호하시나요?";
+        public String q5 = "5. 마일리지 서비스를 자주 이용하시나요?";
+        public String q6 = "6. 할인률을 중요하게 생각하시나요?";
     }
 }
