@@ -151,7 +151,7 @@
                         </div>
                         <!-- 설명칸 -->
                         <div class="col-lg-4 me-auto">
-                            <p class="lead" th:text="${desc}">
+                            <p class="lead" th:utext="${desc}">
                             </p>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                             <textarea name = "context" class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
                     </li>
                 </ul>
-                <button type="submit" class="btn btn-dark mt-3 btn-lg btn-block " onClick="javascript:addReply();">submit</button>
+                <button type="submit" class="btn btn-dark mt-3 btn-lg btn-block " onClick="javascript:addReply();">댓글 작성하기</button>
                 </form>
             </div>
 
