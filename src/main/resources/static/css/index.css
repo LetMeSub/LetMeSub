@@ -11548,3 +11548,7 @@ html {
     color: #fff;
     transform: translateY(-7px);
 }
+
+.card-body-top {
+    border-top: 0.125rem solid rgba(0, 0, 0, 0.125);
+}

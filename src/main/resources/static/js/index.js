@@ -148,7 +148,7 @@ function setIndexPage() {
                                 </div>
                                 <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <div class="sub-title card-body">
+                                <div class="sub-title card-body card-body-top">
                                     <h4 class="card-title">${item.subscribe_name}</h4>
                                 
                                 </div>
@@ -207,7 +207,7 @@ function selectIndexPage(category) {
                                 </div>
                                 <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <div class="sub-title card-body">
+                                <div class="sub-title card-body card-body-top ">
                                     <h4 class="card-title">${item.subscribe_name}</h4>
                                 
                                 </div>
@@ -274,7 +274,7 @@ function compareMode() {
                                 </div>
                                 <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <div class="sub-title card-body">
+                                <div class="sub-title card-body card-body-top">
                                     <h4 class="card-title">${item.subscribe_name}</h4>
                                 
                                 </div>
@@ -323,7 +323,7 @@ function compareMode() {
                                 </div>
                                 <img class="img-fluid card-img-top"  src="../assets/img/subs/${item.subscribe_name}.png"
                                      alt="..."/> <!-- 사진 크기 900x650 으로 해야함 -->
-                                <div class="sub-title card-body">
+                                <div class="sub-title card-body card-body-top">
                                     <h4 class="card-title">${item.subscribe_name}</h4>
                                 
                                 </div>
