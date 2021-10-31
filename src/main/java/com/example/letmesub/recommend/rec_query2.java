@@ -34,7 +34,7 @@ public class  rec_query2 {
         public String q3 = "3. 마블영화는 어떤가요?";
         public String q4 = "4. 애니메이션을 선호 하시나요?";
         public String q5 = "5. 다큐맨터리는 어떤가요?";
-        public String q6 = "6. 고전영화를 좋아하시나요?";
+        public String q6 = "6. 예능은 어떤가요?";
     }
 
     public static class music{
