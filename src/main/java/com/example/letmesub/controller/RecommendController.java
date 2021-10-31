@@ -93,27 +93,24 @@ public class RecommendController
         int uweight = Integer.parseInt(req.getParameter("weight"));
         //weight 세션 처리
         //세션에 arraylist로 유저가 입력한 가중치 저장
-        ArrayList<Integer> list = (ArrayList)session.getAttribute("weight");
-        System.out.println("dd"+(ArrayList)session.getAttribute("weight"));
-        ArrayList<Integer> common_list = (ArrayList)session.getAttribute("common_weight");
-        System.out.println(user_selected_category);
-        System.out.println("유저가 입력한 공통질문의 대답은 "+common_list);
-        System.out.println("유저가 입력한 카테고리별 질문의 대답은 "+list);
+        ArrayList<Integer> list = (ArrayList)session.getAttribute("weight1");
+
+        ArrayList<Integer> common_list1 = (ArrayList)session.getAttribute("common_weight");
+        ArrayList<Integer> list2 = (ArrayList)session.getAttribute("weight1");
+
+
         if(list==null){
             list = new ArrayList<Integer>();
-            session.setAttribute("weight",list);
+            session.setAttribute("weight1",list);
         }
         list.add(uweight);
-        System.out.println(user_selected_category);
-        System.out.println("유저가 입력한 공통질문의 대답은 "+common_list);
-        System.out.println("유저가 입력한 카테고리별 질문의 대답은 "+list);
 
         //뒤로가기를 했다가 다시하는 등 list개수와 질문개수 안맞을때 인덱스페이지로 이동함
         if(qcount != list.size()+1){
             //다시 이 페이지에서 접속해도 사용할수있게 list클리어 후 세션에 반영함
             list.clear();
-            session.setAttribute("weight",list);
-            session.setAttribute("common_weight",list);
+            session.removeAttribute("common_weight");
+            session.removeAttribute("weight1");
             return "index";
         }
         
@@ -133,7 +130,7 @@ public class RecommendController
             //공통질문 가중치 적용함
             if(user_selected_category.equals("ott")){
                 //첫번째 공통질문에서 답이 1일경우 카테고리별질문 5,1에 가중치 더함
-                if(common_list.get(0)==1)
+                if(common_list1.get(0)==1)
                 {weight_list.set(4, weight_list.get(4)+2);
                     weight_list.set(0, weight_list.get(0)+2);}
                 //첫번째 공통질문에서 답이 0일경우 카테고리별질문 3,6에 가중치 더함
@@ -141,32 +138,32 @@ public class RecommendController
                 {weight_list.set(2, weight_list.get(2)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 //두번째 공통질문에서 답이 1일경우 카테고리별질문 2,6에 가중치 더함
-                if(common_list.get(1)==1)
+                if(common_list1.get(1)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 //이하 동일
                 else
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(2, weight_list.get(2)+2);}
-                if(common_list.get(2)==1)
+                if(common_list1.get(2)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(4, weight_list.get(4)+2);}
                 else
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
-                if(common_list.get(3)==1)
+                if(common_list1.get(3)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
                 else
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(4, weight_list.get(4)+2);}
-                if(common_list.get(4)==1)
+                if(common_list1.get(4)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 else
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
-                if(common_list.get(5)==1)
+                if(common_list1.get(5)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(2, weight_list.get(2)+2);}
                 else
@@ -175,7 +172,7 @@ public class RecommendController
             }
             else if(user_selected_category.equals("music")){
                 //첫번째 공통질문에서 답이 1일경우 카테고리별질문 5,1에 가중치 더함
-                if(common_list.get(0)==1)
+                if(common_list1.get(0)==1)
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 //첫번째 공통질문에서 답이 0일경우 카테고리별질문 3,6에 가중치 더함
@@ -183,32 +180,32 @@ public class RecommendController
                 {weight_list.set(2, weight_list.get(2)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
                 //두번째 공통질문에서 답이 1일경우 카테고리별질문 2,6에 가중치 더함
-                if(common_list.get(1)==1)
+                if(common_list1.get(1)==1)
                 {weight_list.set(3, weight_list.get(3)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 //이하 동일
                 else
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(4, weight_list.get(4)+2);}
-                if(common_list.get(2)==1)
+                if(common_list1.get(2)==1)
                 {weight_list.set(2, weight_list.get(2)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
                 else
                 {weight_list.set(4, weight_list.get(4)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
-                if(common_list.get(3)==1)
+                if(common_list1.get(3)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 else
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(4, weight_list.get(4)+2);}
-                if(common_list.get(4)==1)
+                if(common_list1.get(4)==1)
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 else
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
-                if(common_list.get(5)==1)
+                if(common_list1.get(5)==1)
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(1, weight_list.get(1)+2);}
                 else
@@ -217,7 +214,7 @@ public class RecommendController
             }
             else if(user_selected_category.equals("shopping")){
                 //첫번째 공통질문에서 답이 1일경우 카테고리별질문 5,1에 가중치 더함
-                if(common_list.get(0)==1)
+                if(common_list1.get(0)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(2, weight_list.get(2)+2);}
                 //첫번째 공통질문에서 답이 0일경우 카테고리별질문 3,6에 가중치 더함
@@ -225,32 +222,32 @@ public class RecommendController
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
                 //두번째 공통질문에서 답이 1일경우 카테고리별질문 2,6에 가중치 더함
-                if(common_list.get(1)==1)
+                if(common_list1.get(1)==1)
                 {weight_list.set(4, weight_list.get(4)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 //이하 동일
                 else
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
-                if(common_list.get(2)==1)
+                if(common_list1.get(2)==1)
                 {weight_list.set(4, weight_list.get(4)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
                 else
                 {weight_list.set(2, weight_list.get(2)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
-                if(common_list.get(3)==1)
+                if(common_list1.get(3)==1)
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(3, weight_list.get(3)+2);}
                 else
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(4, weight_list.get(4)+2);}
-                if(common_list.get(4)==1)
+                if(common_list1.get(4)==1)
                 {weight_list.set(0, weight_list.get(0)+2);
                     weight_list.set(4, weight_list.get(4)+2);}
                 else
                 {weight_list.set(2, weight_list.get(2)+2);
                     weight_list.set(5, weight_list.get(5)+2);}
-                if(common_list.get(5)==1)
+                if(common_list1.get(5)==1)
                 {weight_list.set(1, weight_list.get(1)+2);
                     weight_list.set(2, weight_list.get(2)+2);}
                 else
@@ -287,10 +284,9 @@ public class RecommendController
 
             //다시 이 페이지에서 접속해도 사용할수있게 list클리어 후 세션에 반영함
             list.clear();
-            System.out.println("list클리어 세션값은" + list);
-            session.setAttribute("weight",list);
             //비어있는 배열을 집어넣어서 공통질문도 다시 사용할수있게함
-            session.setAttribute("common_weight",list);
+            session.removeAttribute("common_weight");
+            session.removeAttribute("weight1");
             return "recommend_choosing";
         }
         return "recommend";
@@ -372,15 +368,12 @@ public class RecommendController
 
         //세션에 weight값 추가
         list_common.add(common_weight);
-        //세션 콘솔창에 추가
-        System.out.println(list_common);
-        System.out.println(common_query_count);
 
         //뒤로가기를 했다가 다시하는 등 list개수와 질문개수 안맞을때 인덱스페이지로 이동함
         if(common_query_count != list_common.size()+1){
             //다시 이 페이지에서 접속해도 사용할수있게 list클리어 후 세션에 반영함
             list_common.clear();
-            session.setAttribute("common_weight",list_common);
+            session.removeAttribute("common_weight");
             return "index";
         }
 
