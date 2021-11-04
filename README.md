@@ -104,3 +104,5 @@ CREATE TABLE comment (
  # ~/LetMeSub/build/libs 디렉터리에서 Jar 파일 실행
  java -jar ["빌드된 jar 파일"] 
 ```
+
+### 6. insert.txt에 있는 쿼리문 실행
