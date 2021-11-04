@@ -106,3 +106,7 @@ CREATE TABLE comment (
 ```
 
 ### 6. insert.txt에 있는 쿼리문 실행
+
+
+
+# Environment
