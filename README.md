@@ -105,8 +105,10 @@ CREATE TABLE comment (
  java -jar ["빌드된 jar 파일"] 
 ```
 
-### 6. insert.txt에 있는 쿼리문 실행
-
+### 6. insert.txt에 있는 쿼리스크립트 실행
+```sh
+insert.txt 의 쿼리문을 DBMS 에서 실행
+```
 
 
 # Environment
