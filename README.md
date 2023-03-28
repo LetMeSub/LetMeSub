@@ -62,7 +62,7 @@ CREATE TABLE subscribe (
   `subscribe_count` int DEFAULT NULL,
   `subscribe_category` char(20) DEFAULT NULL,
   `subscribe_weight` int DEFAULT NULL,
-  `subsribe_rate` int DEFAULT NULL,
+  `subscribe_rate` int DEFAULT NULL,
   PRIMARY KEY (`subscribe_name`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
