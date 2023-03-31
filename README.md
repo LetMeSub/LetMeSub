@@ -115,4 +115,22 @@ insert.txt 의 쿼리문을 DBMS 에서 실행
 ```
 
 
-# Environment
+# 개발환경
+Java 11
+Intellij IDEA Ultimate 2022.2.2
+Gradle 7.2
+Spring Boot 2.5.5
+
+# 기술 세부 스택 
+* Spring Boot
+  * Spring Web
+  * MyBatis
+  * Thymleaf
+  * Lombok
+  * MySQL Driver
+
+* JavaScript
+  * Bootstrap
+  * Jquery
+  * Jquery-cookie
+  * Ajax
